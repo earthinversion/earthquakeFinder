@@ -1,6 +1,8 @@
 # Earthquake Finder
-Author: Utpal Kumar
-Contributor: Nguyễn Công Nghĩa
+Author: _Utpal Kumar_
+
+Contributor: _Nguyễn Công Nghĩa_
+
 This program can be used to obtain the earthquake information from various sources. The user can search for any event for given time range, magnitude range, depth range, geographical area. It can also obtain the focal mechanism solutions for the given parameters. It gives the output file (catalog.txt by default) where all the information is stored. It also plots the output (both with the focal mechanism and without it.)
 This program makes use of the __obspy__ module of __Python__ and retrieve data from the [International Seismological Center (ISC) server](http://www.isc.ac.uk/iscbulletin/search/catalogue/)
 
