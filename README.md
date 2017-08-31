@@ -7,19 +7,19 @@ This program can be used to obtain the earthquake information from various sourc
 This program makes use of the __obspy__ module of __Python__ and retrieve data from the [International Seismological Center (ISC) server](http://www.isc.ac.uk/iscbulletin/search/catalogue/)
 
 ## Examples:
-### to run with default parameters
+### To run with default parameters
 `python3 earthquakeFinder.py`
 
-### to obtain the earthquake info between today, March 2016 to the current time
+### To obtain the earthquake info between today, March 2016 to the current time
 `python3 earthquakeFinder.py st=2016/3`
 
-### to obtain the earthquake info between 2016, march, 29 to 2016, september, 22
+### To obtain the earthquake info between 2016, march, 29 to 2016, september, 22
 `python3 earthquakeFinder.py st=2016/3/29,et=2016/9/22`
 
-### to obtain the catalog for magnitudes between 4-9 and with focal mechanism
+### To obtain the catalog for magnitudes between 4-9 and with focal mechanism
 `python3 earthquakeFinder.py mxmag=9,mnmag=4,fm=yes`
 
-### to obtain catalog for magnitude 4-7, and within radius of 10 (default) and central coordinates 22(lat),121(lon) with focal mechanism
+### To obtain catalog for magnitude 4-7, and within radius of 10 (default) and central coordinates 22(lat),121(lon) with focal mechanism
 `python3 earthquakeFinder.py mxmag=7,mnmag=4,clat=22,clon=121,mxrad=80,fm=yes`
 
 ### Parameters to change (default values in the braces):
