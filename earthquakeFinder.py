@@ -85,8 +85,8 @@ mnlon = "-180"
 mxlon = "180"
 
 # For circular search
-minrad =0
-maxrad=10
+minrad ="0"
+maxrad="10"
 clat=""
 clon=""
 # Depths
@@ -183,10 +183,10 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
         maxlat=None
         minlon=None
         maxlon=None
-        minrad=float(minrad)
+        minrad=int(minrad)
         clat=float(clat)
         clon=float(clon)
-        maxrad=float(maxrad)
+        maxrad=int(maxrad)
     else:
         minlat=float(minlat)
         maxlat=float(maxlat)
@@ -196,7 +196,7 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
         clat=None
         clon=None
         maxrad=None
-    # try:
+    try:
         tt1=UTCDateTime("{}-{}-{}T{}:{}:{}".format(yearS,monthS,int(dayS),hourS,minuteS,secondS))
         tt2=UTCDateTime("{}-{}-{}T{}:{}:{}".format(yearE,monthE,int(dayE),hourE,minuteE,secondE))
         client = Client("IRIS")
@@ -227,8 +227,8 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
                 out = "{:4d};{:2d};{:2d};{:2d};{:2d};{:5.2f};{:9.4f};{:9.4f};{:5.1f};{:5s};{:3.1f};{}".format(int(eventinfo[i][0]), int(eventinfo[i][1]), int(eventinfo[i][2]), int(eventinfo[i][3]), int(eventinfo[i][4]), float(eventinfo[i][5]), float(eventinfo[i][6]), float(eventinfo[i][7]), float(eventinfo[i][8]) / 1000, str(eventinfo[i][9]), float(eventinfo[i][10]), str(eventinfo[i][11]))
                 # print(out)
                 file.write(out + "\n")
-    # except:
-    #     print("Failed to fetch the data! Try some other parameters")
+    except:
+        print("Failed to fetch the data! Try some other parameters")
 ###########################################################################################
 def catalogDownloaderISC(yearS=stv[0], monthS=stv[1], dayS=stv[2], hourS=stv[3], minuteS=stv[4], secondS=stv[5], yearE=etv[0], monthE=etv[1], dayE=etv[2], hourE=etv[3], minuteE=etv[4],secondE=etv[5],minlat=mnlat, maxlat=mxlat, minlon=mnlon, maxlon=mxlon, minD=mnD, maxD=mxD, minM=mnM, maxM=mxM,maxrad=maxrad,clat=clat,clon=clon, outfile=out):
     if clat and clon:
