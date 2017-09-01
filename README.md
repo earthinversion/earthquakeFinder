@@ -31,6 +31,7 @@ With Focal Mechanism -> "_YEAR_ _MONTH_ _DAY_ _HOUR_ _MIN_ _SEC_ _LONGITUDE_ _LA
 ### Requirements
 1. Python 3: Can be obtained from [here](https://www.python.org/downloads/) or download Anaconda [here](https://www.anaconda.com/download/)
 2. Extra Modules
+
     (a) basemap: It is a great tool for creating maps using python in a simple way.
         The best way to obtain basemap is via [Anaconda/Miniconda](https://conda.io/miniconda.html)
         For Linux/Mac users just download the bash installer and inside the download directory, execute the following command:
