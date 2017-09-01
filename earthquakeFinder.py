@@ -10,7 +10,7 @@ from obspy import UTCDateTime
 from obspy.clients.fdsn import Client
 import warnings
 '''
-This programs is handy for downloading the earthquake informations and catalog for given input.
+This program is handy for downloading the earthquake informations and catalog for given input.
 If the user call the program without any input then it will run for the default parameters.
 Default Parameters:
 ending time(et): 6 months from now
@@ -49,7 +49,9 @@ mnla(-90),mxla(90),mnlo(-180),mxlo(180),mndep(0),mxdep(700),mnmag(4),mxmag(10),m
 '''
 ###########################################################################################
 warnings.filterwarnings("ignore")
-
+sug='''Parameters to change (default values in the braces):
+mnla(-90),mxla(90),mnlo(-180),mxlo(180),mndep(0),mxdep(700),mnmag(4),mxmag(10),mnrad(0),mxrad(10),clat(None),clon(None),st(-1 month),et (current time),fm(no)\n'''
+print(sug)
 def monthdelta(date, delta):
     m, y = (date.month+delta) % 12, date.year + ((date.month)+delta-1) // 12
     if not m: m = 12
@@ -307,7 +309,7 @@ if __name__=="__main__":
     if os.path.exists(out):
         num=num_events(out)
         print("Number of events found: {}".format(num))
-        if num<15000:
+        if 1<=num<15000:
             print("Plotting events...please wait...")
             import cat_plot
             fignm="EQmap.pdf"
