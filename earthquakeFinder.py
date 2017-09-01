@@ -52,6 +52,7 @@ warnings.filterwarnings("ignore")
 sug='''Parameters to change (default values in the braces):
 mnla(-90),mxla(90),mnlo(-180),mxlo(180),mndep(0),mxdep(700),mnmag(4),mxmag(10),mnrad(0),mxrad(10),clat(None),clon(None),st(-1 month),et (current time),fm(no)\n'''
 print(sug)
+
 def monthdelta(date, delta):
     m, y = (date.month+delta) % 12, date.year + ((date.month)+delta-1) // 12
     if not m: m = 12
@@ -144,7 +145,7 @@ try:
                 out=itmval
                 print("Output catalog file is {}".format(out))
     # makes the values lesser than 10, 2-digit
-    for i in range(len(stv)):
+    for i in np.arange(len(stv)):
         if int(stv[i]) < 10:
             stv[i] = "%02d" % int(stv[i])
         if int(etv[i]) < 10:
@@ -195,14 +196,14 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
         clat=None
         clon=None
         maxrad=None
-    try:
+    # try:
         tt1=UTCDateTime("{}-{}-{}T{}:{}:{}".format(yearS,monthS,int(dayS),hourS,minuteS,secondS))
         tt2=UTCDateTime("{}-{}-{}T{}:{}:{}".format(yearE,monthE,int(dayE),hourE,minuteE,secondE))
         client = Client("IRIS")
         catalog = client.get_events(starttime=tt1, endtime=tt2,minlatitude=minlat,maxlatitude=maxlat, minlongitude=minlon, maxlongitude=maxlon, latitude=clat, longitude=clon, minradius=minrad, maxradius=maxrad, mindepth=minD, maxdepth=maxD, minmagnitude=minM, maxmagnitude=maxM)
         eventinfo = [[] for i in range(len(catalog))]
 
-        for i in range(len(catalog)):
+        for i in np.arange(len(catalog)):
             arr = eventinfo[i]
             event = catalog[i]
             arr.append(event.origins[0]["time"].year)
@@ -216,8 +217,8 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
             arr.append(event.origins[0]["depth"])
             arr.append(event.magnitudes[0]["magnitude_type"])
             arr.append(event.magnitudes[0]["mag"])
-            # arr.append(event.focal_mechanisms)
             arr.append(event.event_descriptions[0].text)
+        # print(eventinfo)
         outcatalog = "catalog.txt"
         frmt = "YEAR;MONTH;DAY;HOUR;MINUTES;SECONDS;LONGITUDE;LATITUDE;DEPTH;MAG_TYPE;MAG;EVENT_NAME\n"
         with open(outcatalog, 'w') as file:
@@ -226,8 +227,8 @@ def catalogDownloader(yearS=int(stv[0]), monthS=int(stv[1]), dayS=int(stv[2]), h
                 out = "{:4d};{:2d};{:2d};{:2d};{:2d};{:5.2f};{:9.4f};{:9.4f};{:5.1f};{:5s};{:3.1f};{}".format(int(eventinfo[i][0]), int(eventinfo[i][1]), int(eventinfo[i][2]), int(eventinfo[i][3]), int(eventinfo[i][4]), float(eventinfo[i][5]), float(eventinfo[i][6]), float(eventinfo[i][7]), float(eventinfo[i][8]) / 1000, str(eventinfo[i][9]), float(eventinfo[i][10]), str(eventinfo[i][11]))
                 # print(out)
                 file.write(out + "\n")
-    except:
-        print("Failed to fetch the data! Try some other parameters")
+    # except:
+    #     print("Failed to fetch the data! Try some other parameters")
 ###########################################################################################
 def catalogDownloaderISC(yearS=stv[0], monthS=stv[1], dayS=stv[2], hourS=stv[3], minuteS=stv[4], secondS=stv[5], yearE=etv[0], monthE=etv[1], dayE=etv[2], hourE=etv[3], minuteE=etv[4],secondE=etv[5],minlat=mnlat, maxlat=mxlat, minlon=mnlon, maxlon=mxlon, minD=mnD, maxD=mxD, minM=mnM, maxM=mxM,maxrad=maxrad,clat=clat,clon=clon, outfile=out):
     if clat and clon:
@@ -312,7 +313,6 @@ if __name__=="__main__":
         if 1<=num<15000:
             print("Plotting events...please wait...")
             import cat_plot
-            fignm="EQmap.pdf"
+            fignm="EQmap.png"
             cat_plot.eqqplot(out, fignm)
 
-##Plotting events

@@ -29,9 +29,14 @@ Without Focal Mechanism -> "_YEAR_ _MONTH_ _DAY_ _HOUR_ _MINUTES_ _SECONDS_ _LON
 With Focal Mechanism -> "_YEAR_ _MONTH_ _DAY_ _HOUR_ _MIN_ _SEC_ _LONGITUDE_ _LATITUDE_ _DEPTH_ _EXP_(Nm) _M0_ _MAG_ _Mrr_ _Mtt_ _Mpp_ _Mrt_ _Mtp_ _Mpr_ _Str1_ _Dip1_ _Rake1_ _Str2_ _Dip2_ _Rake2_."
 
 ### Requirements
-1. Python 3: Can be obtained from [here.](https://www.python.org/downloads/)
+1. Python 3: Can be obtained from [here](https://www.python.org/downloads/) or download Anaconda [here](https://www.anaconda.com/download/)
 2. Extra Modules
-    (a) requests: `pip install requests`
+    (a) basemap: `pip install basemap`
+        The best way to obtain basemap is via [Anaconda/Miniconda](https://conda.io/miniconda.html)
+        For Linux/Mac users just download the bash installer and inside the download directory, execute the following command:
+        `bash Miniconda*.sh`
+        For Windows user, download the exe file and install it.
+        After the installation of Anaconda/Miniconda, basemap can be obtained by simply  executing the command `conda install basemap`
     (b) pandas: `pip install pandas`
     (c) obspy: `pip install obspy`
 
